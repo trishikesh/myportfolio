@@ -63,24 +63,32 @@ skillsHeader.forEach((el) => {
 
 
 /*==================== PORTFOLIO SWIPER  ====================*/
-const images = ["image1.jpg", "image2.jpg", "image3.jpg"]; // Array of project images
-let currentIndex = 0;
+const images = [
+    ["image1.jpg", "image2.jpg", "image3.jpg"], // Project 1 images
+    ["image4.jpg", "image5.jpg", "image6.jpg"], // Project 2 images
+    ["image7.jpg", "image8.jpg", "image9.jpg"], // Project 3 images
+    ["image10.jpg", "image11.jpg", "image12.jpg"] // Project 4 images
+];
 
-function showImage(index) {
-    const carouselImage = document.getElementById('carousel-image');
-    carouselImage.src = images[index];
+let indices = [0, 0, 0, 0]; // Current image index for each carousel
+
+function showImage(cardIndex, imageIndex) {
+    const carouselImage = document.getElementById(`carousel-image-${cardIndex + 1}`);
+    carouselImage.src = images[cardIndex][imageIndex];
 }
 
-function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
+function nextImage(cardIndex) {
+    indices[cardIndex] = (indices[cardIndex] + 1) % images[cardIndex].length;
+    showImage(cardIndex, indices[cardIndex]);
 }
 
-// Change image every 3 seconds
-setInterval(nextImage, 3000);
+// Set interval for each carousel
+images.forEach((_, index) => {
+    setInterval(() => nextImage(index), 3000);
+});
 
-// Initial image display
-showImage(currentIndex);
+// Initial display of images
+images.forEach((_, index) => showImage(index, 0));
 
 
 
@@ -88,7 +96,37 @@ showImage(currentIndex);
 /*==================== TESTIMONIAL ====================*/
 
 
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+/*==================== CONTACT ME====================*/
+document.getElementById('contact-form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent page reload
+
+    const formData = new FormData(this);
+
+    const data = {
+        first_name: formData.get('first_name'),
+        last_name: formData.get('last_name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        message: formData.get('message'),
+    };
+
+    fetch('/submit-form', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('response-message').innerText = data;
+        this.reset(); // Clear the form
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('response-message').innerText = 'Failed to send message.';
+    });
+});
 
 
 /*==================== CHANGE BACKGROUND HEADER ====================*/ 

@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Portfolio Website</title>
 
         <!--==================== UNICONS ====================-->
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
@@ -13,7 +14,15 @@
         <!--==================== CSS ====================-->
         <link rel="stylesheet" href="assets/css/styles.css">
 
-        <title>Responsive Portfolio Website</title>
+        <!--===================emailJs=======================-->
+        <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("eCiB9qMCaZPeb4dAY"); // Your EmailJS public API key
+        })();
+    </script>
+
+        
     </head>
     <body>
         <!--==================== HEADER ====================-->
@@ -353,49 +362,90 @@
             </section>
 
             <!--==================== PORTFOLIO ====================-->
-            <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Carousel</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-    <div class="projects-section">
-        <h1>PROJECTS</h1>
-        <div class="project-card">
-            <div class="carousel">
-                <img id="carousel-image" src="image1.jpg" alt="Project Image" />
+            <div class="projects-section" id="works">
+                <h1>Recent Works</h1>
+                <div class="projects-container">
+                    <!-- Project Card 1 -->
+                    <div class="project-card">
+                        <div class="carousel">
+                            <img id="carousel-image-1" src="image1.jpg" alt="Project Image 1" />
+                        </div>
+                        <div class="project-info">
+                            <h2>Project Title 1</h2>
+                            <p>Short description of the first project.</p>
+                            <a href="https://github.com/username/repo1" target="_blank">Source Code</a>
+                        </div>
+                    </div>
+        
+                    <!-- Project Card 2 -->
+                    <div class="project-card">
+                        <div class="carousel">
+                            <img id="carousel-image-2" src="image2.jpg" alt="Project Image 2" />
+                        </div>
+                        <div class="project-info">
+                            <h2>Project Title 2</h2>
+                            <p>Short description of the second project.</p>
+                            <a href="https://github.com/username/repo2" target="_blank">Source Code</a>
+                        </div>
+                    </div>
+        
+                    <!-- Project Card 3 -->
+                    <div class="project-card">
+                        <div class="carousel">
+                            <img id="carousel-image-3" src="image3.jpg" alt="Project Image 3" />
+                        </div>
+                        <div class="project-info">
+                            <h2>Project Title 3</h2>
+                            <p>Short description of the third project.</p>
+                            <a href="https://github.com/username/repo3" target="_blank">Source Code</a>
+                        </div>
+                    </div>
+        
+                    <!-- Project Card 4 -->
+                    <div class="project-card">
+                        <div class="carousel">
+                            <img id="carousel-image-4" src="image4.jpg" alt="Project Image 4" />
+                        </div>
+                        <div class="project-info">
+                            <h2>Project Title 4</h2>
+                            <p>Short description of the fourth project.</p>
+                            <a href="https://github.com/username/repo4" target="_blank">Source Code</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="project-info">
-                <h2>Project Title</h2>
-                <p>Short description of the project goes here. This should be concise and informative.</p>
-                <a href="https://github.com/username/repo" target="_blank">Source Code</a>
-            </div>
-        </div>
-        <!-- Repeat similar project-card sections for additional projects -->
-    </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-            <!--==================== PROJECT IN MIND ====================-->
-            <section class="project section">
-
-            </section>
-
             <!--==================== TESTIMONIAL ====================-->
             <section class="testimonial section">
                 
             </section>
 
             <!--==================== CONTACT ME ====================-->
-            <section class="contact section" id="contact">
+            <!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="contact-container">
+        <div class="form-wrapper">
+            <h1>Let's Connect</h1>
+            <form id="contact-form">
+                <div class="input-row">
+                    <input type="text" name="first_name" placeholder="First Name" required>
+                    <input type="text" name="last_name" placeholder="Last Name" required>
+                </div>
+                <div class="input-row">
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="text" name="phone" placeholder="Phone Number" required>
+                </div>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+            <div id="response-message"></div>
+        </div>
+    </div>
+</section>
 
-            </section>
         </main>
 
         <!--==================== FOOTER ====================-->
